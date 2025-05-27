@@ -134,7 +134,7 @@ retriever = SelfQueryRetriever.from_llm(
     # metadata_field_info = metadata_field_info,
     # examples = filter_examples_simplified,
     verbose=True,
-    search_kwargs= {"k": 10},
+    search_kwargs= {"k": 7},
 )
 
 
