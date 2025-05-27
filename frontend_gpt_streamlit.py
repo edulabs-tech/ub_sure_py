@@ -1,5 +1,6 @@
 import json
 import re
+import urllib
 import uuid
 
 import pyperclip
@@ -216,7 +217,8 @@ def format_source(doc, index):
 
     # Source URL and display name
     source_url = md.get('source', '#') or '#'
-    name_of_the_link = source_url.split('/')[-1]
+    # name_of_the_link = source_url.split('/')[-1]
+    name_of_the_link = urllib.parse.unquote(source_url.split('/')[-1])
 
     # Build display fields list
     fields = [company]
