@@ -498,8 +498,9 @@ metadata_field_info_simplified = [
     AttributeInfo(
         name="companyName",
         description= (
-            f"Optional: Related company name (insurance/financial). Valid options are {UB_SURE_COMPANIES}."
+            f"Optional: Related company name (insurance/financial)."
             f"Important: If user inserts company name פניקס than user intended to say הפניקס."
+            f"Important: You are allowed to select one and only one from the list of valid companies names provided here: {UB_SURE_COMPANIES}"
             # f"This filter is optional but if there is a company name that is in the provided list choose it from the list"
             # f"or don't provide companyName at all."
             # f"Expected single value from: {format_list_for_description(UB_SURE_COMPANIES)}."
