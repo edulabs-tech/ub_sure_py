@@ -9,21 +9,28 @@ UB_SURE_DOC_TYPES = [
     'מדד'          # Index / Benchmark / Measure
 ]
 
-UB_SURE_INSURANCE_COMPANIES = [
-    "הראל",
-    "הפניקס",
-    "מגדל",
-    "מנורה",
-    "כלל",
+
+
+UB_SURE_COMPANIES_INVESTMENT = [
     "מיטב",  # Investment House
     "אלטושלר",  # Investment House
     "מור",  # Investment House
     "אינפיניטי",  # Investment House
     "אנליסט",  # Investment House
     "ילין לפידות",  # Investment House
+  ]
+
+UB_SURE_COMPANIES_INSURANCE = [
+    "הראל",
+    "הפניקס",
+    "מגדל",
+    "מנורה",
+    "כלל",
     "הכשרה",
     "איילון"
   ]
+
+UB_SURE_COMPANIES = UB_SURE_COMPANIES_INSURANCE + UB_SURE_COMPANIES_INVESTMENT
 
 
 

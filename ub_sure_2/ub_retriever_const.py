@@ -4,12 +4,12 @@ from langchain.chains.query_constructor.base import AttributeInfo
 
 from ub_sure_2.ub_sure_const import UB_CATEGORIES, ALL_DEPARTMENTS, UB_SURE_DOC_TYPES, DOC_CATEGORIES, \
     DOC_SUB_CATEGORIES, \
-    UB_SURE_INSURANCE_COMPANIES, DOC_SUB_CATEGORY_BRIUT, UB_DOC_TYPE, UB_INSURANCE_DEPARTMENT, UB_INSURANCE_TOPICS, \
+    UB_SURE_COMPANIES, DOC_SUB_CATEGORY_BRIUT, UB_DOC_TYPE, UB_INSURANCE_DEPARTMENT, UB_INSURANCE_TOPICS, \
     UB_REGULATIONS_TOPICS
 
 # retriever_document_content_description = (
 #     "This collection contains Hebrew documents pertaining to the Israeli insurance and financial regulation sectors. "
-#     f"Documents originate from various companies and institutions, including insurance providers and investment houses (e.g., {', '.join(UB_SURE_INSURANCE_COMPANIES[:3])}..., full list available in 'companyName' metadata). "
+#     f"Documents originate from various companies and institutions, including insurance providers and investment houses (e.g., {', '.join(UB_SURE_COMPANIES[:3])}..., full list available in 'companyName' metadata). "
 #     f"The content is broadly classified by 'category' ({', '.join(UB_CATEGORIES)}) and covers primary areas specified in 'type' (e.g., {', '.join(ALL_DEPARTMENTS[:4])}...). "
 #     f"Specific document classifications like {', '.join(UB_SURE_DOC_TYPES)} are available via the 'docType' field. "
 #     "The core content relates to insurance policies (health, life, long-term savings), investment products (pension funds, provident funds), legal texts, regulatory guidelines, circulars, and industry benchmarks. "
@@ -24,7 +24,7 @@ from ub_sure_2.ub_sure_const import UB_CATEGORIES, ALL_DEPARTMENTS, UB_SURE_DOC_
 #     "investment products (such as pension funds, provident funds), legal texts, regulatory guidelines, "
 #     "circulars, and industry benchmarks. "
 #     "To effectively retrieve specific documents, leverage the following metadata fields: "
-#     f"\n- 'companyName': Identifies the originating company or institution, such as an insurance provider or investment house (e.g., {', '.join(UB_SURE_INSURANCE_COMPANIES[:3])}...). "
+#     f"\n- 'companyName': Identifies the originating company or institution, such as an insurance provider or investment house (e.g., {', '.join(UB_SURE_COMPANIES[:3])}...). "
 #     f"\n- 'category': Broadly classifies the document's primary content, for example, as 'ביטוח' (insurance-related), 'רגולציה' (regulatory matters), or 'פרטי התקשרות' (contact details) (e.g., {', '.join(UB_CATEGORIES)}). "
 #     f"\n- 'type': Specifies the main area or department the document's subject matter belongs to, such as 'בריאות' (health), 'חיים' (life), 'השקעות' (investments), or 'שירות/כללי' (general service) (e.g., {', '.join(ALL_DEPARTMENTS[:4])}...). "
 #     f"\n- 'docType': Indicates the formal nature or classification of the document itself, such as 'תנאי ביטוח' (insurance policy conditions), 'חוק' (law), 'חוזר' (circular), or 'מדד' (benchmark) (e.g., {', '.join(UB_SURE_DOC_TYPES)}). "
@@ -40,13 +40,13 @@ retriever_document_content_description = (
     "investment products (such as pension funds, provident funds), legal texts, regulatory guidelines, "
     "circulars, and industry benchmarks. "
     # "To effectively retrieve specific documents, leverage the following metadata fields: "
-    # f"\n- 'companyName': Identifies the originating company or institution, such as an insurance provider or investment house (e.g., {', '.join(UB_SURE_INSURANCE_COMPANIES[:3])}...). "
+    # f"\n- 'companyName': Identifies the originating company or institution, such as an insurance provider or investment house (e.g., {', '.join(UB_SURE_COMPANIES[:3])}...). "
     # f"\n- 'docSubCategory': Identifies the topic of the insurance, such as an insurance provider or investment house (e.g., {', '.join(DOC_SUB_CATEGORY_BRIUT)}...). "
     # "\nUse these metadata fields individually or in combination to precisely filter for documents based on their specific content, origin, and classification."
 )
 
 # retrieval_description = f"""Use this tool to search and retrieve relevant Hebrew documents about Israeli insurance products, financial instruments (like pensions, provident funds), and related laws and regulations.
-# The documents originate from various Israeli companies and financial institutions (e.g., {', '.join(UB_SURE_INSURANCE_COMPANIES[:3])}...).
+# The documents originate from various Israeli companies and financial institutions (e.g., {', '.join(UB_SURE_COMPANIES[:3])}...).
 # This tool is ideal for finding specific information such as:
 # - Policy terms and conditions ('תנאי ביטוח')
 # - Disclosure documents ('גילוי נאות')
@@ -327,7 +327,7 @@ def format_list_for_description(items: list, max_items=100) -> str:
 #     AttributeInfo(
 #         name="companyName",
 #         # Corrected list reference to CLIENT_NAMES and clarified 'single value'
-#         description=f"Related company name (insurance/financial). Expected single value from: {format_list_for_description(UB_SURE_INSURANCE_COMPANIES)}.",
+#         description=f"Related company name (insurance/financial). Expected single value from: {format_list_for_description(UB_SURE_COMPANIES)}.",
 #         type="string", # This field is a single string
 #     ),
 #     # AttributeInfo(
@@ -404,7 +404,7 @@ def format_list_for_description(items: list, max_items=100) -> str:
 #     AttributeInfo(
 #         name="companyName",
 #         # Corrected list reference to CLIENT_NAMES and clarified 'single value'
-#         description=f"Related company name (insurance/financial). Expected single value from: {format_list_for_description(UB_SURE_INSURANCE_COMPANIES)}.",
+#         description=f"Related company name (insurance/financial). Expected single value from: {format_list_for_description(UB_SURE_COMPANIES)}.",
 #         type="string", # This field is a single string
 #     ),
 #     AttributeInfo(
@@ -444,7 +444,7 @@ metadata_field_info = [
     # ),
     AttributeInfo(
         name="companyName",
-        description=f"Related company name (insurance/financial). Expected single value from: {format_list_for_description(UB_SURE_INSURANCE_COMPANIES)}.",
+        description=f"Related company name (insurance/financial). Expected single value from: {format_list_for_description(UB_SURE_COMPANIES)}.",
         type="string", # This field is a single string
     ),
     # AttributeInfo(
@@ -498,12 +498,12 @@ metadata_field_info_simplified = [
     AttributeInfo(
         name="companyName",
         description= (
-            f"Optional: Related company name (insurance/financial). Valid options are {UB_SURE_INSURANCE_COMPANIES}."
+            f"Optional: Related company name (insurance/financial). Valid options are {UB_SURE_COMPANIES}."
             f"Important: If user inserts company name פניקס than user intended to say הפניקס."
             # f"This filter is optional but if there is a company name that is in the provided list choose it from the list"
             # f"or don't provide companyName at all."
-            # f"Expected single value from: {format_list_for_description(UB_SURE_INSURANCE_COMPANIES)}."
-            # f"Important: The only valid options are: {format_list_for_description(UB_SURE_INSURANCE_COMPANIES)}."
+            # f"Expected single value from: {format_list_for_description(UB_SURE_COMPANIES)}."
+            # f"Important: The only valid options are: {format_list_for_description(UB_SURE_COMPANIES)}."
 
         ),
         type="string",  # This field is a single string

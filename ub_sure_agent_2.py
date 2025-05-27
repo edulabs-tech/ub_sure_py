@@ -70,10 +70,11 @@ vectorstore = MongoDBAtlasVectorSearch(
 # llm_agent = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
 
 
-MAX_HISTORY_TOKENS = 10_000
+MAX_HISTORY_TOKENS = 50_000
 MAX_SUMMARY_TOKENS = 1_000
 
-llm_retriever = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# llm_retriever = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+llm_retriever = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
 llm_agent = ChatOpenAI(model="gpt-4.1-mini", temperature=1, streaming=True)
 
 llm_summarization = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)

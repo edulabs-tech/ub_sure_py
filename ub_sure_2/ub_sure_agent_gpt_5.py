@@ -19,7 +19,7 @@ from langchain.retrievers.self_query.base import SelfQueryRetriever
 
 from GeminiModels import GeminiModels
 from ub_retriever_const import metadata_field_info
-from ub_sure_const import UB_SURE_INSURANCE_COMPANIES, INSURANCE_TYPE_HEB, INSURANCE_CATEGORY_HEB, \
+from ub_sure_const import UB_SURE_COMPANIES, INSURANCE_TYPE_HEB, INSURANCE_CATEGORY_HEB, \
     INSURANCE_SUB_CATEGORY_HEB, INSURANCE_TYPE_AVAILABLE_HEB, INSURANCE_COVERAGE_TYPE_HEB
 from ub_sure_prompts import SYSTEM_MESSAGE_SIMPLE
 # from langchain_deepseek import ChatDeepSeek
@@ -65,7 +65,7 @@ vectorstore = MongoDBAtlasVectorSearch(
 # metadata_field_info = [
 #     AttributeInfo(
 #         name="companyName",
-#         description=f"The insurance company name. One of {UB_SURE_INSURANCE_COMPANIES}.",
+#         description=f"The insurance company name. One of {UB_SURE_COMPANIES}.",
 #         type="string",
 #     ),
 #     AttributeInfo(
@@ -97,7 +97,7 @@ vectorstore = MongoDBAtlasVectorSearch(
 
 # Updated document content description
 document_content_description = (
-    f"This collection contains insurance-related documents in Hebrew from various companies such as {UB_SURE_INSURANCE_COMPANIES}. "
+    f"This collection contains insurance-related documents in Hebrew from various companies such as {UB_SURE_COMPANIES}. "
     "The documents include גילוי נאות (disclosure documents), תנאי ביטוח (insurance conditions), and חוק וסדר (legal documents and regulations). "
     f"They cover insurance types such as {INSURANCE_TYPE_AVAILABLE_HEB} and are further organized into categories like {INSURANCE_CATEGORY_HEB}, "
     "which map to sections such as basic health insurance not covered by Kupat Holim, surgeries in Israel, ambulatory appendices, "
@@ -125,10 +125,10 @@ retriever = SelfQueryRetriever.from_llm(
 
 retrieval_description = f"""
 Returns answers for any user question.
-Searches and returns insurance-related documents in Hebrew from various companies such as {UB_SURE_INSURANCE_COMPANIES}.
+Searches and returns insurance-related documents in Hebrew from various companies such as {UB_SURE_COMPANIES}.
 
 **Document Sources:**
-Documents originate from various insurance companies, including those listed in {UB_SURE_INSURANCE_COMPANIES}.
+Documents originate from various insurance companies, including those listed in {UB_SURE_COMPANIES}.
 
 **Document Types:**
 - גילוי נאות (Disclosure Documents)

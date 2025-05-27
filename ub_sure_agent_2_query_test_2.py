@@ -44,8 +44,8 @@ vectorstore = MongoDBAtlasVectorSearch(
 )
 
 # LLM for query construction
-# llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
+# llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 # llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 # llm = ChatVertexAI(
