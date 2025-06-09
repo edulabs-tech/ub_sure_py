@@ -51,7 +51,8 @@ DB_NAME = "ub-sure-test"
 # COLLECTION_NAME = "ub-sure-collection-heb-4"
 # INDEX_NAME = "ub-sure-collection-heb-4"
 
-COLLECTION_NAME = "ub-sure-collection-heb-6"
+# COLLECTION_NAME = "ub-sure-collection-heb-6"
+COLLECTION_NAME = "ub-sure-collection-heb-7"
 INDEX_NAME = COLLECTION_NAME
 
 MongoClient = MongoClient(CONNECTION_STRING)
@@ -75,14 +76,14 @@ MAX_SUMMARY_TOKENS = 1_000
 
 # llm_retriever = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 llm_retriever = ChatOpenAI(model="gpt-4.1-mini", temperature=0)
-llm_agent = ChatOpenAI(model="gpt-4.1-mini", temperature=1, streaming=True)
+llm_agent = ChatOpenAI(model="gpt-4.1-mini", temperature=0.8, streaming=True)
 
 llm_summarization = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
 summarization_model = llm_summarization.bind(max_tokens=MAX_SUMMARY_TOKENS)
 # llm_agent = ChatOpenAI(model="gpt-4o-mini", temperature=1)
 
 
-# Alternative set Cheaper x4
+# # Alternative set Cheaper x4
 # llm_retriever = ChatVertexAI(model="gemini-2.0-flash", temperature=0.2)
 # llm_agent = ChatVertexAI(
 #     model="gemini-2.0-flash",

@@ -190,7 +190,8 @@ def format_source(doc, index):
         val = md.get(key)
         if isinstance(val, (list, tuple)):
             return ", ".join(str(v) for v in val)
-        return str(val) if val is not None else "Unknown"
+        # return str(val) if val is not None else "Unknown"
+        return str(val) if val is not None else "-"
 
     # Extract metadata fields
     company = normalize('companyName')
@@ -212,8 +213,8 @@ def format_source(doc, index):
     # Location lines if present
     loc = md.get('loc', {}) or {}
     lines = loc.get('lines', {}) or {}
-    start_line = lines.get('from', 'Unknown')
-    end_line = lines.get('to', 'Unknown')
+    start_line = lines.get('from', '-')
+    end_line = lines.get('to', '-')
 
     # Source URL and display name
     source_url = md.get('source', '#') or '#'
@@ -223,7 +224,7 @@ def format_source(doc, index):
     # Build display fields list
     fields = [company]
     for part in (dept_type, doc_type, category, doc_category, doc_subcategory, insurance_department):
-        if part and part != 'Unknown':
+        if part and part != '-':
             fields.append(part)
     joined_fields = ' | '.join(fields)
 
@@ -357,17 +358,17 @@ def main():
         # col_copy_last will be right-most, col_explain_actions middle, col_organize_actions left-most.
         col_copy_last, col_explain_actions, col_organize_actions, nothing = st.columns([5, 30, 30, 35])  # Adjust ratios as needed
 
-        with col_copy_last:
-            st.button(
-                "",  # Icon for copy
-                key="copy_last_msg_action_bar",
-                on_click=copy_clicked,
-                icon=":material/content_copy:",
-                type="tertiary",
-                args=[last_assistant_message_content],  # Make sure this variable holds the last AI message
-                use_container_width=True,
-                help="העתק את התשובה האחרונה של יובי"
-            )
+        # with col_copy_last:
+        #     st.button(
+        #         "",  # Icon for copy
+        #         key="copy_last_msg_action_bar",
+        #         on_click=copy_clicked,
+        #         icon=":material/content_copy:",
+        #         type="tertiary",
+        #         args=[last_assistant_message_content],  # Make sure this variable holds the last AI message
+        #         use_container_width=True,
+        #         help="העתק את התשובה האחרונה של יובי"
+        #     )
 
         with col_explain_actions:
             with st.expander("🤔 הבנה ופירוט", expanded=False):  # First dropdown-like menu (middle column)
